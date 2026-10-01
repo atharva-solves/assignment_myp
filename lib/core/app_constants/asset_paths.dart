@@ -9,6 +9,13 @@ class AssetPaths {
   static const String actionsProfileIcon = '$basePath/actions_profile_icon.png';
   static const String bell = '$basePath/bell.png';
 
+  // Profile Icons
+  static const String profileImg1 = '$basePath/profile_img_1.png';
+  static const String profileImg2 = '$basePath/profile_img_2.png';
+  static const String profileImg3 = '$basePath/profile_img_3.png';
+  static const String profileImg4 = '$basePath/profile_img_4.png';
+  static const String profileImg5 = '$basePath/profile_img_5.png';
+
   // Group Assets
   static const String group914 = '$basePath/Group 914.png';
   static const String group916 = '$basePath/Group 916.png';
