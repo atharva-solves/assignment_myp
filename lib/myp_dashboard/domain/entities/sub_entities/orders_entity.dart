@@ -10,8 +10,7 @@ class OrdersEntity extends DashboardBaseEntity {
   OrdersEntity({
     required super.cardName,
     required super.imagePath,
-    required super.backgroundColor,
-    required super.buttonColor,
+  
     required this.activeOrdersCount,
     required this.activeUserAvatars,
     required this.pendingOrdersCount,

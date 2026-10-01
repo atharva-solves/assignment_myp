@@ -12,8 +12,7 @@ class CustomersEntity extends DashboardBaseEntity {
   CustomersEntity({
     required super.cardName,
     required super.imagePath,
-    required super.backgroundColor,
-    required super.buttonColor,
+   
     required this.newCustomersCount,
     required this.newCustomerAvatars,
     required this.growthPercentage,

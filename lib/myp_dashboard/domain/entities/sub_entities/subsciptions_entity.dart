@@ -10,8 +10,7 @@ class SubscriptionsEntity extends DashboardBaseEntity {
   SubscriptionsEntity({
     required super.cardName,
     required super.imagePath,
-    required super.backgroundColor,
-    required super.buttonColor,
+  
     required this.deliveriesCount,
     required this.deliveryUserAvatars,
     required this.activeSubscriptionsCount,
