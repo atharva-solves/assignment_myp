@@ -35,4 +35,7 @@ class AssetPaths {
   // Search Icons
   static const String searchCircle = '$basePath/search_circle.png';
   static const String search = '$basePath/search.png';
+
+  //Background Images
+   static const String customerPercentageGraphImage = '$basePath/customers_percentage_graph.png';
 }
