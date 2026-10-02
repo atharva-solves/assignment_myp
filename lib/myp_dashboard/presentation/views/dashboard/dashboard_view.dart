@@ -24,26 +24,30 @@ class DashboardView extends GetView<DashboardController> {
             DashboardAppbar(),
             const SizedBox(height: 18),
             DashboardWelcomeHeader(),
-            
-            const SizedBox(height: 18),
+
+            const SizedBox(height: 16),
             // Dashboard Cards Section
-            SizedBox(
-              height: 210, // Approximate height matching the design proportions
-              child: Obx(() {
-                return ListView.separated(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.dashboardPadding,
-                  ),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: controller.dashboardInfoList.length,
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(width: 16),
-                  itemBuilder: (context, index) {
-                    final entity = controller.dashboardInfoList[index];
-                    return DashboardInfoCard(entity: entity);
-                  },
-                );
-              }),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+              ),
+              child: SizedBox(
+                height:
+                    210, // Approximate height matching the design proportions
+                child: Obx(() {
+                  return ListView.separated(
+                   
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.dashboardInfoList.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 16),
+                    itemBuilder: (context, index) {
+                      final entity = controller.dashboardInfoList[index];
+                      return DashboardInfoCard(entity: entity);
+                    },
+                  );
+                }),
+              ),
             ),
           ],
         ),
@@ -51,4 +55,3 @@ class DashboardView extends GetView<DashboardController> {
     );
   }
 }
-

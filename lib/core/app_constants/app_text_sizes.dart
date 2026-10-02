@@ -9,6 +9,9 @@ class AppTextSizes {
 
   /// Primary component titles: 'New order created', active calendar date numbers ('23')
   static const double itemTitle = 16.0;
+  static const double activeCount = 18.0;
+
+
 
   /// Primary body & button labels: 'New Order created with Order', 'Orders' button
   static const double bodyPrimary = 12.0;
