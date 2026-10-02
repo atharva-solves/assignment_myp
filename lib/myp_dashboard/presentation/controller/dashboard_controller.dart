@@ -20,7 +20,7 @@ class DashboardController extends GetxController {
       // 1. Orders Card Object
       OrdersEntity(
         cardName: 'Orders',
-        imagePath: AssetPaths.group914,
+        imagePath: AssetPaths.iconOrders,
         activeOrdersCount: 3,
         activeUserAvatars: const [
           AssetPaths.profileImg1,
@@ -37,7 +37,7 @@ class DashboardController extends GetxController {
       // 2. Subscriptions Card Object
       SubscriptionsEntity(
         cardName: 'Subscriptions',
-        imagePath: AssetPaths.group916,
+        imagePath: AssetPaths.iconSubscriptions,
         deliveriesCount: 3,
         deliveryUserAvatars: const [
           AssetPaths.profileImg1,
@@ -51,7 +51,7 @@ class DashboardController extends GetxController {
       // 3. View Customers Card Object
       CustomersEntity(
         cardName: 'View Customers',
-        imagePath: AssetPaths.group919,
+        imagePath: AssetPaths.iconViewCustomers,
         newCustomersCount: 15,
         newCustomerAvatars: const [
           AssetPaths.profileImg1,
