@@ -22,17 +22,17 @@ class DateSectionHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // 1. Date & Day Module
-          DateDayModule(),
-          
-          // Row for 2. Timeline & 3. Calendar Modules
-          Row(
-            children: [
-              TimelineModule(),
-              SizedBox(width: 8), // Gap between the two pill containers
-              CalendarModule(),
-            ],
-          ),
+          DateDayModule(), // Left side (Today / Jan 23)
+          const SizedBox(
+            width: 8,
+          ), // Add a small flexible gap instead of spaceBetween if needed
+          // Wrap the middle/dropdown item in Flexible so it shrinks if needed
+          Flexible(child: TimelineModule()),
+
+           SizedBox(width: 8),
+
+          // Wrap the right-side button in Flexible so it doesn't overflow
+          Flexible(child: CalendarModule()),
         ],
       ),
     );

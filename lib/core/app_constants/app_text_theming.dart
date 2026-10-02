@@ -27,7 +27,7 @@ class AppTextTheme {
         fontWeight: FontWeight(700),
         color: const Color(0xFF53648B), // Slate navy hue from the design spec
         letterSpacing: -0.3,
-        height: 1.3,
+        height: 1.0,
       ),
       // 3. Component Titles & Active Calendar Date Numbers (16px)
       titleMedium: GoogleFonts.roboto(

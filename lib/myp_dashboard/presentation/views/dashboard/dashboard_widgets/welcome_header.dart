@@ -9,8 +9,12 @@ class DashboardWelcomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.dashboardPadding),
-      child: Row(
+      padding: const EdgeInsets.only(
+    left: AppSpacing.dashboardPadding,
+    right: AppSpacing.dashboardPadding,
+    bottom: AppSpacing.dashboardPadding,
+    top: 0, // Explicitly set top to 0
+  ),child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(

@@ -254,6 +254,30 @@ abstract class DashboardBaseEntity {
   });
 }
  
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\day_entity.dart ---  
+class DayEntity {
+  final String day;
+  final String date;
+  final bool isSelected;
+
+  DayEntity({
+    required this.day,
+    required this.date,
+    this.isSelected = false,
+  });
+
+  DayEntity copyWith({
+    String? day,
+    String? date,
+    bool? isSelected,
+  }) {
+    return DayEntity(
+      day: day ?? this.day,
+      date: date ?? this.date,
+      isSelected: isSelected ?? this.isSelected,
+    );
+  }
+} 
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\sub_entities\customers_entity.dart ---  
 // 3. Customers Entity
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
@@ -332,6 +356,7 @@ class DashboardBinding extends Bindings {
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\controller\dashboard_controller.dart ---  
 import 'package:assignment_myp/core/app_constants/asset_paths.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
+import 'package:assignment_myp/myp_dashboard/domain/entities/day_entity.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/customers_entity.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/orders_entity.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/subsciptions_entity.dart';
@@ -341,10 +366,14 @@ class DashboardController extends GetxController {
   /// Reactive List initialized with generic base entity
   final RxList<DashboardBaseEntity> dashboardInfoList = <DashboardBaseEntity>[].obs;
 
+  /// Reactive List for Days
+  final RxList<DayEntity> daysList = <DayEntity>[].obs;
+
   @override
   void onInit() {
     super.onInit();
     loadDashboardData();
+    loadDaysData();
   }
 
   void loadDashboardData() {
@@ -401,22 +430,44 @@ class DashboardController extends GetxController {
       ),
     ]);
   }
+
+  /// Load days list items
+  void loadDaysData() {
+    daysList.assignAll([
+      DayEntity(day: 'MON', date: '20', isSelected: false),
+      DayEntity(day: 'TUE', date: '21', isSelected: false),
+      DayEntity(day: 'WED', date: '22', isSelected: false),
+      DayEntity(day: 'THU', date: '23', isSelected: true),
+      DayEntity(day: 'FRI', date: '24', isSelected: false),
+      DayEntity(day: 'SAT', date: '25', isSelected: false),
+      DayEntity(day: 'SUN', date: '26', isSelected: false),
+    ]);
+  }
+
+  /// Single selection logic for days
+  void selectDay(int index) {
+    for (int i = 0; i < daysList.length; i++) {
+      daysList[i] = daysList[i].copyWith(isSelected: i == index);
+    }
+  }
 } 
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_view.dart ---  
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/core/app_constants/app_spacing.dart';
 import 'package:assignment_myp/core/app_constants/asset_paths.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/controller/dashboard_controller.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/bnb/dashboard_bottom_bar.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_appbar.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/dashboard_info_card.dart';
-import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section/date_section_header.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/infocard_listview.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section_header/date_section_header.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/day_section/day_list_module.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/floating_action_button.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/new_order/new_order_widget.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/welcome_header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-// Ensure you import your entity class if strictly typing 'DashboardBaseEntity'
-// import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
 
 class DashboardView extends GetView<DashboardController> {
   const DashboardView({super.key});
@@ -424,46 +475,38 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
             DashboardAppbar(),
-            const SizedBox(height: 10),
+           // const SizedBox(height: 10), // Increased to match the top spacing
             DashboardWelcomeHeader(),
 
-            const SizedBox(height: 14),
+            const SizedBox(height: 32), // Increased to provide appropriate gap before the main card
             // Dashboard Cards Section
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 14,
-              ),
-              child: SizedBox(
-                height:
-                    230, // Approximate height matching the design proportions
-                child: Obx(() {
-                  return ListView.separated(
-                   
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.dashboardInfoList.length,
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(width: 16),
-                    itemBuilder: (context, index) {
-                      final entity = controller.dashboardInfoList[index];
-                      return DashboardInfoCard(entity: entity);
-                    },
-                  );
-                }),
-              ),
-            ),
-             const SizedBox(height: 14),
+            InfoCardListView(),
+            const SizedBox(height: 32), // Increased for visual separation from the timeline section
             DateSectionHeader(),
+            const SizedBox(height: 24), // Adjusted spacing between date controls and the days list
+            DayListModule(),
+            const SizedBox(height: 30), // Increased to push the NewOrderWidget out of the initial viewport
+            NewOrderWidget(),
+            const SizedBox(height: 80), // Added bottom padding to ensure the last item is not completely hidden under the floating bottom bar when scrolled
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FAB(),
+      bottomNavigationBar: DashboardBottomBar(
+        selectedIndex: 0,
+        onTabSelected: (index) {
+          // Update your state here
+        },
+      ),
     );
   }
-}
- 
+} 
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_appbar.dart ---  
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/core/app_constants/app_spacing.dart';
@@ -553,6 +596,23 @@ class DashboardAppbar extends StatelessWidget {
             );
   }
 } 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\floating_action_button.dart ---  
+import 'package:assignment_myp/core/app_constants/app_colors.dart';
+import 'package:flutter/material.dart';
+
+class FAB extends StatelessWidget {
+  const FAB({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+        backgroundColor: AppColors.navyBlue,
+        shape: const CircleBorder(),
+        onPressed: () {},
+        child: const Icon(Icons.add, color: Colors.white, size: 24),
+      );
+  }
+} 
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\new_order_widget.dart ---  
  
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\welcome_header.dart ---  
@@ -624,6 +684,128 @@ class DashboardWelcomeHeader extends StatelessWidget {
   }
 }
  
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bnb\bnb_module.dart ---  
+import 'package:assignment_myp/core/app_constants/app_colors.dart';
+import 'package:flutter/material.dart';
+
+class BnbModule extends StatelessWidget {
+  final String assetPath;
+  final String name;
+  final bool isSelected;
+  final VoidCallback? onTap;
+
+  const BnbModule({
+    super.key,
+    required this.assetPath,
+    required this.name,
+    this.isSelected = false,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final Color activeTextColor = AppColors.navyBlue;
+    const Color inactiveColor = Color(0xFF8A94A6);
+
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            assetPath,
+            width: 22,
+            height: 22,
+            fit: BoxFit.contain,
+            // FIX: If selected, pass 'null' to show the original multi-colored asset.
+            // If not selected, apply the grey inactive color.
+            color: isSelected ? null : inactiveColor, 
+          ),
+          const SizedBox(height: 4),
+          Text(
+            name,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+              color: isSelected ? activeTextColor : inactiveColor, // Text still gets the active color
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+} 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bnb\dashboard_bottom_bar.dart ---  
+import 'package:assignment_myp/core/app_constants/app_colors.dart';
+import 'package:assignment_myp/core/app_constants/asset_paths.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/bnb/bnb_module.dart';
+import 'package:flutter/material.dart';
+
+class DashboardBottomBar extends StatelessWidget {
+  final int selectedIndex;
+  final void Function(int) onTabSelected;
+
+  const DashboardBottomBar({
+    super.key,
+    this.selectedIndex = 0,
+    required this.onTabSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      color: Colors.white,
+      shape: const CircularNotchedRectangle(), // This creates the hollow cutout
+      notchMargin: 8.0, // This defines how much empty space is around the FAB
+      clipBehavior: Clip.antiAlias,
+      elevation: 10,
+      child: SizedBox(
+        height: 65,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            // 1. Home
+            BnbModule(
+              assetPath: AssetPaths.iconBnbHome,
+              name: "Home",
+              isSelected: selectedIndex == 0,
+              onTap: () => onTabSelected(0),
+            ),
+
+            // 2. Customers
+            BnbModule(
+              assetPath: AssetPaths.iconBnbCustomers,
+              name: "Customers",
+              isSelected: selectedIndex == 1,
+              onTap: () => onTabSelected(1),
+            ),
+
+            // Spacer for the center FAB notch
+            const SizedBox(width: 48),
+
+            // 3. Khata
+            BnbModule(
+              assetPath: AssetPaths.iconBnbKhata,
+              name: "Khata",
+              isSelected: selectedIndex == 2,
+              onTap: () => onTabSelected(2),
+            ),
+
+            // 4. Orders
+            BnbModule(
+              assetPath: AssetPaths.iconOrders,
+              name: "Orders",
+              isSelected: selectedIndex == 3,
+              onTap: () => onTabSelected(3),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+} 
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bottom_nav\bottom_bar.dart ---  
  
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bottom_nav\bottom_bar_section.dart ---  
@@ -715,6 +897,42 @@ class DashboardInfoCard extends StatelessWidget {
   }
 }
  
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\infocard_listview.dart ---  
+import 'package:assignment_myp/myp_dashboard/presentation/controller/dashboard_controller.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/dashboard_info_card.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+
+class InfoCardListView extends GetView<DashboardController> {
+  const new({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return   Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+              ),
+              child: SizedBox(
+                height:
+                    230, // Approximate height matching the design proportions
+                child: Obx(() {
+                  return ListView.separated(
+                   
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.dashboardInfoList.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 16),
+                    itemBuilder: (context, index) {
+                      final entity = controller.dashboardInfoList[index];
+                      return DashboardInfoCard(entity: entity);
+                    },
+                  );
+                }),
+              ),
+            );
+  }
+} 
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_percentage_container.dart ---  
  
 // --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_red_new_card.dart ---  
@@ -1195,7 +1413,7 @@ class InfoCardRightSection extends StatelessWidget {
     return const SizedBox();
   }
 } 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\calendar_module.dart ---  
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section_header\calendar_module.dart ---  
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/core/app_constants/asset_paths.dart';
 import 'package:flutter/material.dart';
@@ -1212,9 +1430,9 @@ class CalendarModule extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
+             color: Colors.black.withValues(alpha: 0.2),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -1240,9 +1458,7 @@ class CalendarModule extends StatelessWidget {
     );
   }
 } 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\dates_widget.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\date_day_module.dart ---  
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section_header\date_day_module.dart ---  
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -1269,11 +1485,11 @@ class DateDayModule extends StatelessWidget {
     );
   }
 } 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\date_section_header.dart ---  
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section_header\date_section_header.dart ---  
 import 'package:assignment_myp/core/app_constants/app_spacing.dart';
-import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section/calendar_module.dart';
-import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section/date_day_module.dart';
-import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section/timeline_module.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section_header/calendar_module.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section_header/date_day_module.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/date_section_header/timeline_module.dart';
 import 'package:flutter/material.dart';
 
 // Import your newly created widget files here
@@ -1294,23 +1510,24 @@ class DateSectionHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // 1. Date & Day Module
-          DateDayModule(),
-          
-          // Row for 2. Timeline & 3. Calendar Modules
-          Row(
-            children: [
-              TimelineModule(),
-              SizedBox(width: 8), // Gap between the two pill containers
-              CalendarModule(),
-            ],
-          ),
+          DateDayModule(), // Left side (Today / Jan 23)
+          const SizedBox(
+            width: 8,
+          ), // Add a small flexible gap instead of spaceBetween if needed
+          // Wrap the middle/dropdown item in Flexible so it shrinks if needed
+          Flexible(child: TimelineModule()),
+
+           SizedBox(width: 8),
+
+          // Wrap the right-side button in Flexible so it doesn't overflow
+          Flexible(child: CalendarModule()),
         ],
       ),
     );
   }
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\timeline_module.dart ---  
+}
+ 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section_header\timeline_module.dart ---  
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -1320,15 +1537,15 @@ class TimelineModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
+            BoxShadow(
+             color: Colors.black.withValues(alpha: 0.2),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -1338,6 +1555,7 @@ class TimelineModule extends StatelessWidget {
           Text(
             "TIMELINE",
             style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              letterSpacing: -0.3,
               color: AppColors.navyBlue,
               fontWeight: FontWeight.w600,
             ),
@@ -1347,6 +1565,223 @@ class TimelineModule extends StatelessWidget {
             Icons.arrow_drop_down,
             color: AppColors.navyBlue,
             size: 20,
+          ),
+        ],
+      ),
+    );
+  }
+} 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\day_section\day_list_module.dart ---  
+import 'package:assignment_myp/core/app_constants/app_spacing.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/controller/dashboard_controller.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/day_section/day_module.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class DayListModule extends GetView<DashboardController> {
+  const DayListModule({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.dashboardPadding,
+      ),
+      child: SizedBox(
+        height: 60,
+        child: Obx(() {
+          return ListView.separated(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemCount: controller.daysList.length,
+            separatorBuilder: (context, index) => const SizedBox(width: 30),
+            itemBuilder: (context, index) {
+              final dayEntity = controller.daysList[index];
+              return DayModule(
+                dayEntity: dayEntity,
+                onTap: () => controller.selectDay(index),
+              );
+            },
+          );
+        }),
+      ),
+    );
+  }
+} 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\day_section\day_module.dart ---  
+import 'package:assignment_myp/core/app_constants/app_colors.dart';
+import 'package:assignment_myp/core/app_constants/app_text_sizes.dart';
+import 'package:assignment_myp/myp_dashboard/domain/entities/day_entity.dart';
+import 'package:flutter/material.dart';
+
+class DayModule extends StatelessWidget {
+  final DayEntity dayEntity;
+  final VoidCallback onTap;
+
+  const DayModule({
+    super.key,
+    required this.dayEntity,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const Color activeGreen = AppColors.darkTeal; // Color(0xFF0F8181)
+    const Color unselectedDayColor = Color(0xFFB8C2D0);
+    const Color unselectedDateColor = AppColors.navyBlue;
+
+    final Color dayTextColor =
+        dayEntity.isSelected ? activeGreen : unselectedDayColor;
+    final Color dateTextColor =
+        dayEntity.isSelected ? activeGreen : unselectedDateColor;
+
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // 1. Day
+          Text(
+            dayEntity.day,
+            style: TextStyle(
+              fontSize: AppTextSizes.caption,
+              fontWeight: FontWeight.w600,
+              color: dayTextColor,
+            ),
+          ),
+          const SizedBox(height: 4),
+
+          // 2. Date
+          Text(
+            dayEntity.date,
+            style: TextStyle(
+              fontSize: AppTextSizes.itemTitle,
+              fontWeight: FontWeight.bold,
+              color: dateTextColor,
+            ),
+          ),
+          const SizedBox(height: 4),
+
+          // 3. Green Dot Indicator or Shrink Box
+          dayEntity.isSelected
+              ? Container(
+                  width: 6,
+                  height: 6,
+                  decoration: const BoxDecoration(
+                    color: activeGreen,
+                    shape: BoxShape.circle,
+                  ),
+                )
+              : const SizedBox.shrink(),
+        ],
+      ),
+    );
+  }
+} 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\new_order\new_order_widget.dart ---  
+import 'package:assignment_myp/core/app_constants/app_colors.dart';
+import 'package:assignment_myp/core/app_constants/app_spacing.dart';
+import 'package:assignment_myp/core/app_constants/asset_paths.dart';
+import 'package:flutter/material.dart';
+
+class NewOrderWidget extends StatelessWidget {
+  const NewOrderWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.dashboardPadding,
+        vertical: 10,
+      ),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+            BoxShadow(
+             color: Colors.black.withValues(alpha: 0.2),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Left Side - Flex taking more space
+          Expanded(
+            flex: 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // 1. Title
+                Text(
+                  "New order created",
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: const Color(0xFF53648B), // Light navy blueish
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                
+                const SizedBox(height: 8), // Standard space
+                
+                // 2. Subtitle
+                Text(
+                  "New Order created with Order",
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: const Color(0xFF4B5563),
+                      ),
+                ),
+                
+                const SizedBox(height: 18), // Comparatively bigger space
+                
+                // 3. Time
+                Text(
+                  "09:00 AM",
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: AppColors.coralOrange,
+                      ),
+                ),
+                
+                const SizedBox(height: 4), // Small gap before the arrow
+                
+                // 4. Arrow
+                const Icon(
+                  Icons.arrow_forward,
+                  color: AppColors.coralOrange,
+                  size: 18,
+                ),
+              ],
+            ),
+          ),
+
+          // Right Side - Flex taking lesser space with the icon
+          Expanded(
+            flex: 1,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                width: 70,
+                height: 70,
+                decoration: const BoxDecoration(
+                  color: AppColors.orderNoticeIconBg,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Image.asset(
+                    AssetPaths.iconNewOrder,
+                    width: 40, // Adjust this to match how much space the inner icon should take
+                    height: 40,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
