@@ -14,36 +14,33 @@ class InfocardLeftSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: -14,
-      top: 22,
-      bottom: 20,
-      width: 180, // Increased from 150
-      child: Column(
-       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Center(
-              child: Container(
-                width: 160,
-                height: 160,
-                decoration: BoxDecoration(
-                  color: AppColors.cardSurface,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  entity.imagePath,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
+    return Column(
+      children: [
+        const SizedBox(height: 22),
+    
+        Container(
+          width: 122,
+          height: 122,
+          decoration: const BoxDecoration(
+            color: AppColors.cardSurface,
+            shape: BoxShape.circle,
           ),
-
-          const SizedBox(height: 16),
-
-          Container(
+          child: Image.asset(
+            entity.imagePath,
+            fit: BoxFit.contain,
+          ),
+        ),
+    
+        const SizedBox(height: 22),
+    
+        ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxHeight: 30,
+            maxWidth: 120,
+          ),
+          child: Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 14,
+              horizontal: 10,
               vertical: 8,
             ),
             decoration: BoxDecoration(
@@ -52,12 +49,15 @@ class InfocardLeftSection extends StatelessWidget {
             ),
             child: Text(
               entity.cardName,
+              overflow: TextOverflow.fade,
               style: Theme.of(context).textTheme.labelLarge,
               textAlign: TextAlign.center,
             ),
           ),
-        ],
-      ),
+        ),
+    
+        const SizedBox(height: 10),
+      ],
     );
   }
 }

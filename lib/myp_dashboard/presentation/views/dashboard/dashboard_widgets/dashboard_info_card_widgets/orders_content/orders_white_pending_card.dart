@@ -1,5 +1,5 @@
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/orders_entity.dart';
-import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/widget_modules/avatar_stack_module.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/orders_content/avatar_stack_module.dart';
 import 'package:flutter/material.dart';
 
 class OrdersWhitePendingCard extends StatelessWidget {
@@ -17,7 +17,7 @@ class OrdersWhitePendingCard extends StatelessWidget {
       children: [
         // 1. The Container with text
         Container(
-          padding: const EdgeInsets.fromLTRB(16, 10, 16, 28), 
+          padding: const EdgeInsets.fromLTRB(18, 08, 18, 28), 
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
@@ -39,6 +39,7 @@ class OrdersWhitePendingCard extends StatelessWidget {
                   Text(
                     entity.pendingOrdersCount.toString().padLeft(2, '0'),
                     style: textTheme.displayMedium?.copyWith(
+                      fontSize: 20,
                       height: 1.0,
                     ),
                   ),
@@ -68,9 +69,9 @@ class OrdersWhitePendingCard extends StatelessWidget {
         // 2. The Avatar positioned at the bottom layout overlap
         Positioned(
           bottom: -18, 
-          child: AvatarStack(
+          child: OrdersActiveAvatarStack(
             avatars: entity.pendingUserAvatars,
-            borderColor: Colors.white, // Blends seamlessly into white container background
+            borderColor: Colors.red, // Blends seamlessly into white container background
           ),
         ),
       ],

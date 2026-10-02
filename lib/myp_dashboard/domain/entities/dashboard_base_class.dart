@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 abstract class DashboardBaseEntity {
   final String cardName;
   final String imagePath;
+  
 
   DashboardBaseEntity({
     required this.cardName,

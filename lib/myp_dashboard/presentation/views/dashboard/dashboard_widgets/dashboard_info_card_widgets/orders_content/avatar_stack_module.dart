@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AvatarStack extends StatelessWidget {
+class OrdersActiveAvatarStack extends StatelessWidget {
   final List<String> avatars;
   final Color borderColor;
   final double avatarSize;
   final double overlap;
 
-  const AvatarStack({
+  const OrdersActiveAvatarStack({
     super.key,
     required this.avatars,
     this.borderColor = Colors.red, // Keeps your default red border
-    this.avatarSize = 38.0,
+    this.avatarSize = 40.0,
     this.overlap = 26.0,
   });
 

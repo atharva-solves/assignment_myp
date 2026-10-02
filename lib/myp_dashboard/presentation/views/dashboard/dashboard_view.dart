@@ -22,10 +22,10 @@ class DashboardView extends GetView<DashboardController> {
         child: Column(
           children: [
             DashboardAppbar(),
-            const SizedBox(height: 18),
+            const SizedBox(height: 10),
             DashboardWelcomeHeader(),
 
-            const SizedBox(height: 16),
+            const SizedBox(height: 14),
             // Dashboard Cards Section
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -33,7 +33,7 @@ class DashboardView extends GetView<DashboardController> {
               ),
               child: SizedBox(
                 height:
-                    210, // Approximate height matching the design proportions
+                    230, // Approximate height matching the design proportions
                 child: Obx(() {
                   return ListView.separated(
                    

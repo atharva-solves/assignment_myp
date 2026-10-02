@@ -1,4 +1,4 @@
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\main.dart ---  
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\main.dart --- 
 import 'package:assignment_myp/core/app_constants/app_text_theming.dart';
 import 'package:assignment_myp/core/routing/app_pages.dart';
 import 'package:assignment_myp/core/routing/app_routes.dart';
@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_colors.dart ---  
+
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_colors.dart --- 
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -68,13 +68,13 @@ class AppColors {
   static const Color fabBackground = navyBlue;
   static const Color orderNoticeIconBg = coralOrange;
   static const Color cardSurface = Colors.white;
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_spacing.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_spacing.dart --- 
 class AppSpacing {
   AppSpacing._();
   static const double dashboardPadding=12.0;
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_text_sizes.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_text_sizes.dart --- 
 class AppTextSizes {
   AppTextSizes._(); // Private constructor to prevent instantiation
 
@@ -98,8 +98,8 @@ class AppTextSizes {
 
   /// Micro tags & indicators: Timestamps ('09:00 AM'), notification count ('2'), 'Pending'
   static const double microLabel = 10.0;
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_text_theming.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\app_text_theming.dart --- 
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/core/app_constants/app_text_sizes.dart';
 import 'package:flutter/material.dart';
@@ -173,8 +173,8 @@ class AppTextTheme {
     );
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\asset_paths.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\app_constants\asset_paths.dart --- 
 class AssetPaths {
   AssetPaths._(); // Private constructor to prevent instantiation
 
@@ -216,8 +216,8 @@ class AssetPaths {
   //Background Images
    static const String customerPercentageGraphImage = '$basePath/customers_percentage_graph.png';
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\routing\app_pages.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\routing\app_pages.dart --- 
 import 'package:assignment_myp/core/routing/app_routes.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/bindings/dashboard_bindings.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_view.dart';
@@ -232,13 +232,13 @@ class AppPages {
     ),
   ];
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\routing\app_routes.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\core\routing\app_routes.dart --- 
 class AppRoutes {
   static const String dashboard='/dashboard';
   static const String initialRoute=dashboard;
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\dashboard_base_class.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\dashboard_base_class.dart --- 
 import 'package:flutter/material.dart';
 
 /// Abstract Parent Base Class
@@ -252,8 +252,8 @@ abstract class DashboardBaseEntity {
 
   });
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\sub_entities\customers_entity.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\sub_entities\customers_entity.dart --- 
 // 3. Customers Entity
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
 
@@ -276,8 +276,8 @@ class CustomersEntity extends DashboardBaseEntity {
     required this.activeCustomersCount,
     required this.activeCustomerAvatars,
   });
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\sub_entities\orders_entity.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\sub_entities\orders_entity.dart --- 
 // 1. Orders Entity
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
 
@@ -296,8 +296,8 @@ class OrdersEntity extends DashboardBaseEntity {
     required this.pendingOrdersCount,
     required this.pendingUserAvatars,
   });
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\sub_entities\subsciptions_entity.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\domain\entities\sub_entities\subsciptions_entity.dart --- 
 // 2. Subscriptions Entity
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
 
@@ -316,8 +316,8 @@ class SubscriptionsEntity extends DashboardBaseEntity {
     required this.activeSubscriptionsCount,
     required this.pendingDeliveriesCount,
   });
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\bindings\dashboard_bindings.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\bindings\dashboard_bindings.dart --- 
 import 'package:assignment_myp/myp_dashboard/presentation/controller/dashboard_controller.dart';
 import 'package:get/instance_manager.dart';
 
@@ -327,8 +327,8 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<DashboardController>(() => DashboardController());
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\controller\dashboard_controller.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\controller\dashboard_controller.dart --- 
 import 'package:assignment_myp/core/app_constants/asset_paths.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/customers_entity.dart';
@@ -400,8 +400,8 @@ class DashboardController extends GetxController {
       ),
     ]);
   }
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_view.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_view.dart --- 
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/core/app_constants/app_spacing.dart';
 import 'package:assignment_myp/core/app_constants/asset_paths.dart';
@@ -433,11 +433,11 @@ class DashboardView extends GetView<DashboardController> {
             // Dashboard Cards Section
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 18,
+                horizontal: 14,
               ),
               child: SizedBox(
                 height:
-                    210, // Approximate height matching the design proportions
+                    220, // Approximate height matching the design proportions
                 child: Obx(() {
                   return ListView.separated(
                    
@@ -459,8 +459,8 @@ class DashboardView extends GetView<DashboardController> {
     );
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_appbar.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_appbar.dart --- 
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/core/app_constants/app_spacing.dart';
 import 'package:assignment_myp/core/app_constants/asset_paths.dart';
@@ -548,10 +548,10 @@ class DashboardAppbar extends StatelessWidget {
               ),
             );
   }
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\new_order_widget.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\welcome_header.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\new_order_widget.dart --- 
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\welcome_header.dart --- 
 import 'package:assignment_myp/core/app_constants/app_spacing.dart';
 import 'package:assignment_myp/core/app_constants/asset_paths.dart';
 import 'package:flutter/material.dart';
@@ -619,12 +619,12 @@ class DashboardWelcomeHeader extends StatelessWidget {
     );
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bottom_nav\bottom_bar.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bottom_nav\bottom_bar_section.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\card_theme_helper.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bottom_nav\bottom_bar.dart --- 
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\bottom_nav\bottom_bar_section.dart --- 
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\card_theme_helper.dart --- 
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -661,22 +661,23 @@ class CardThemeHelper {
     }
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\dashboard_info_card.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\dashboard_info_card.dart --- 
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
+import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/customers_entity.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/orders_entity.dart';
+import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/subsciptions_entity.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/card_theme_helper.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/customer_content/customers_right_section.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/infocard_left_section.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/orders_content/orders_right_section.dart';
+import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/subscriptions_content/subscriptions_right_section.dart';
 import 'package:flutter/material.dart';
 
 class DashboardInfoCard extends StatelessWidget {
   final DashboardBaseEntity entity;
 
-  const DashboardInfoCard({
-    super.key,
-    required this.entity,
-  });
+  const DashboardInfoCard({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context) {
@@ -687,7 +688,7 @@ class DashboardInfoCard extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.only(top: 10),
-      height: 300,
+      height: 220,
       width: 320,
       decoration: BoxDecoration(
         color: bgColor,
@@ -696,25 +697,38 @@ class DashboardInfoCard extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          InfocardLeftSection(
-            entity: entity,
-            labelColor: labelColor,
-          ),
+          InfocardLeftSection(entity: entity, labelColor: labelColor),
 
           if (entity is OrdersEntity)
             Positioned(
               right: 44,
               top: -10,
-              child: OrdersRightSection(
-                entity: entity as OrdersEntity,
+              child: OrdersRightSection(entity: entity as OrdersEntity),
+            ),
+
+          if (entity is SubscriptionsEntity)
+            Positioned(
+              right: 44,
+              top: -10,
+              child: SubscriptionsRightSection(
+                entity: entity as SubscriptionsEntity,
               ),
+            ),
+          // Inside dashboard_info_card.dart Stack children...
+
+          if (entity is CustomersEntity)
+            Positioned(
+              right: 12,
+              top: -10,
+              child: CustomersRightSection(entity: entity as CustomersEntity),
             ),
         ],
       ),
     );
   }
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\infocard_left_section.dart ---  
+}
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\infocard_left_section.dart --- 
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/dashboard_base_class.dart';
 import 'package:flutter/material.dart';
@@ -760,12 +774,12 @@ class InfocardLeftSection extends StatelessWidget {
 
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 25,
+              horizontal: 14,
               vertical: 8,
             ),
             decoration: BoxDecoration(
               color: labelColor,
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               entity.cardName,
@@ -777,14 +791,13 @@ class InfocardLeftSection extends StatelessWidget {
       ),
     );
   }
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_content_column.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_detail_container.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_percentage_container.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\orders_content\orders_orange_active.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_percentage_container.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_red_new_card.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_right_section.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\customers_white_active_card.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\customer_content\new_customers_avatar_stack.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\orders_content\orders_orange_active.dart --- 
 import 'package:assignment_myp/core/app_constants/app_colors.dart';
 import 'package:assignment_myp/core/app_constants/app_text_sizes.dart';
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/orders_entity.dart';
@@ -875,8 +888,8 @@ class OrdersOrangeActiveCard extends StatelessWidget {
     );
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\orders_content\orders_right_section.dart ---  
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\orders_content\orders_right_section.dart --- 
 import 'package:assignment_myp/myp_dashboard/domain/entities/sub_entities/orders_entity.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/orders_content/orders_orange_active.dart';
 import 'package:assignment_myp/myp_dashboard/presentation/views/dashboard/dashboard_widgets/dashboard_info_card_widgets/orders_content/orders_white_pending_card.dart';
@@ -919,14 +932,12 @@ class OrdersRightSection extends StatelessWidget {
       ),
     );
   }
-} 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\orders_content\orders_white_pending_card.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\subscriptions_content\subscriptions_content_column.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\subscriptions_content\subscription_detail_container.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\widget_modules\avatar_stack_module.dart ---  
+}.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\orders_content\orders_white_pending_card.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\subscriptions_content\subscriptions_right_section.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\subscriptions_content\subscription_blue_delivery_card.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\subscriptions_content\subscription_white_detail_card.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\widget_modules\avatar_stack_module.dart --- 
 import 'package:flutter/material.dart';
 
 class AvatarStack extends StatelessWidget {
@@ -939,7 +950,7 @@ class AvatarStack extends StatelessWidget {
     super.key,
     required this.avatars,
     this.borderColor = Colors.red, // Keeps your default red border
-    this.avatarSize = 38.0,
+    this.avatarSize = 40.0,
     this.overlap = 26.0,
   });
 
@@ -984,12 +995,11 @@ class AvatarStack extends StatelessWidget {
     );
   }
 }
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\widget_modules\colored_container_module.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\widget_modules\icons_stack.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\dates_widget.dart ---  
- 
-// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\date_section_header.dart ---  
- 
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\widget_modules\colored_container_module.dart --- 
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\dashboard_info_card_widgets\widget_modules\icons_stack.dart --- 
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\dates_widget.dart --- 
+.
+// --- File: E:\IT\Flutter Marathon july aug\FLUTTER PREPS\ASSIGNMENT APPS intern\Mypcot UI Assignment Android_Assignment\assignment_myp\lib\myp_dashboard\presentation\views\dashboard\dashboard_widgets\date_section\date_section_header.dart --- 
+.
