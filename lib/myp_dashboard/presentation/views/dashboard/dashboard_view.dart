@@ -23,27 +23,38 @@ class DashboardView extends GetView<DashboardController> {
     return Scaffold(
       extendBody: true,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            DashboardAppbar(),
-            const SizedBox(height: 10), // Increased to match the top spacing
-            DashboardWelcomeHeader(),
- 
-            const SizedBox(height: 32), // Increased to provide appropriate gap before the main card
-            // Dashboard Cards Section
-            InfoCardListView(),
-            const SizedBox(height: 32), // Increased for visual separation from the timeline section
-            DateSectionHeader(),
-            const SizedBox(height: 24), // Adjusted spacing between date controls and the days list
-            DayListModule(),
-            const SizedBox(height: 30), // Increased to push the NewOrderWidget out of the initial viewport
-            NewOrderWidget(),
-            const SizedBox(height: 80), // Added bottom padding to ensure the last item is not completely hidden under the floating bottom bar when scrolled
-          ],
+        // Center ensures the ConstrainedBox stays in the middle of wide screens
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 750, // Standard tablet breakpoint; adjust as needed
+            ),
+            child: Column(
+              children: [
+                const DashboardAppbar(),
+                const SizedBox(height: 10),
+                const DashboardWelcomeHeader(),
+                const SizedBox(height: 32),
+                
+                // Dashboard Cards Section
+                const InfoCardListView(),
+                const SizedBox(height: 32),
+                
+                const DateSectionHeader(),
+                const SizedBox(height: 24),
+                
+                const DayListModule(),
+                const SizedBox(height: 30),
+                
+                const NewOrderWidget(),
+                const SizedBox(height: 80), 
+              ],
+            ),
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FAB(),
+      floatingActionButton: const FAB(),
       bottomNavigationBar: DashboardBottomBar(
         selectedIndex: 0,
         onTabSelected: (index) {
